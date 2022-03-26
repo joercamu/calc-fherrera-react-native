@@ -6,7 +6,7 @@ export const CounterScreen = () => {
   const [count, setcount] = useState(10);
   return (
     <View style={styles.container}>
-      <Text style={styles.titles}> Contador: {count} </Text>
+      <Text style={styles.titles}> {count} </Text>
       <Fab title="+" onPress={() => setcount(count + 1)} />
       <Fab title="-" onPress={() => setcount(count - 1)} position="bl" />
     </View>
