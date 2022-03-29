@@ -11,10 +11,21 @@ interface Props {
   text: string;
   ancho?: boolean;
   action: (text: string) => void;
+  color?: string;
 }
-export const ButtonCalComponent = ({text, ancho, action}: Props) => {
+export const ButtonCalComponent = ({
+  text,
+  ancho,
+  action,
+  color = '#2D2D2D',
+}: Props) => {
   return (
-    <View style={{...styles.buttonContainer, width: ancho ? 180 : 80}}>
+    <View
+      style={{
+        ...styles.buttonContainer,
+        width: ancho ? 180 : 80,
+        backgroundColor: color,
+      }}>
       <TouchableOpacity
         onPress={() => {
           console.log(text);
@@ -27,7 +38,6 @@ export const ButtonCalComponent = ({text, ancho, action}: Props) => {
 };
 const styles = StyleSheet.create({
   buttonContainer: {
-    backgroundColor: '#2D2D2D',
     width: 80,
     height: 80,
     borderRadius: 100,

@@ -32,33 +32,33 @@ export const CalculatorScreen = () => {
       <Text style={{...styles.result, ...styles.resultHistory}}>0</Text>
       <Text style={styles.result}>{result}</Text>
       <View style={styles.rowCal}>
-        <ButtonCalComponent text="C" action={doResult} />
-        <ButtonCalComponent text="+/-" action={doResult} />
-        <ButtonCalComponent text="del" action={doResult} />
-        <ButtonCalComponent text="/" action={doResult} />
+        <ButtonCalComponent text="C" color="#9B9B9B" action={doResult} />
+        <ButtonCalComponent text="+/-" color="#9B9B9B" action={doResult} />
+        <ButtonCalComponent text="del" color="#9B9B9B" action={doResult} />
+        <ButtonCalComponent text="/" color="#FF9427" action={doResult} />
       </View>
       <View style={styles.rowCal}>
         <ButtonCalComponent text="7" action={doResult} />
         <ButtonCalComponent text="8" action={doResult} />
         <ButtonCalComponent text="9" action={doResult} />
-        <ButtonCalComponent text="x" action={doResult} />
+        <ButtonCalComponent text="x" color="#FF9427" action={doResult} />
       </View>
       <View style={styles.rowCal}>
         <ButtonCalComponent text="4" action={doResult} />
         <ButtonCalComponent text="5" action={doResult} />
         <ButtonCalComponent text="6" action={doResult} />
-        <ButtonCalComponent text="-" action={doResult} />
+        <ButtonCalComponent text="-" color="#FF9427" action={doResult} />
       </View>
       <View style={styles.rowCal}>
         <ButtonCalComponent text="1" action={doResult} />
         <ButtonCalComponent text="2" action={doResult} />
         <ButtonCalComponent text="3" action={doResult} />
-        <ButtonCalComponent text="+" action={doResult} />
+        <ButtonCalComponent text="+" color="#FF9427" action={doResult} />
       </View>
       <View style={styles.rowCal}>
         <ButtonCalComponent text="0" ancho action={doResult} />
         <ButtonCalComponent text="." action={doResult} />
-        <ButtonCalComponent text="=" action={doResult} />
+        <ButtonCalComponent text="=" color="#FF9427" action={doResult} />
       </View>
     </View>
   );
