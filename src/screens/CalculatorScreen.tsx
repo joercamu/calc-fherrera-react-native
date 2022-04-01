@@ -1,64 +1,66 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {ButtonCalComponent} from '../components/ButtonCalComponent';
+import {UseCalculator} from '../hooks/UseCalculator';
 
 export const CalculatorScreen = () => {
-  const [result, setResult] = useState('0');
-
-  const doResult = (numberToConcat: string) => {
-    // clean
-    if (numberToConcat === 'C') {
-      setResult('0');
-      return;
-    }
-
-    // primer numero
-    if (result === '0' && numberToConcat !== '0') {
-      setResult(numberToConcat);
-      return;
-    }
-
-    // primer numero
-    if (result.includes('.') && numberToConcat === '.') {
-      return;
-    }
-
-    // else
-    setResult(result + numberToConcat);
-  };
+  const operatorsDisplay = ['', '-', '+', '*', '/'];
+  const {
+    operation,
+    resultBack,
+    result,
+    limpiar,
+    positioNegativo,
+    btnDelete,
+    btnDividir,
+    armarNumero,
+    btnMultiplicar,
+    btnRestar,
+    btnSumar,
+    calcular,
+  } = UseCalculator();
 
   return (
     <View style={styles.container}>
-      <Text style={{...styles.result, ...styles.resultHistory}}>0</Text>
-      <Text style={styles.result}>{result}</Text>
+      <Text style={{...styles.resultCurrent, ...styles.resultHistory}}>
+        {resultBack}
+        {operatorsDisplay[operation]}
+      </Text>
+      <Text style={styles.resultCurrent} numberOfLines={1} adjustsFontSizeToFit>
+        {result}
+      </Text>
       <View style={styles.rowCal}>
-        <ButtonCalComponent text="C" color="#9B9B9B" action={doResult} />
-        <ButtonCalComponent text="+/-" color="#9B9B9B" action={doResult} />
-        <ButtonCalComponent text="del" color="#9B9B9B" action={doResult} />
-        <ButtonCalComponent text="/" color="#FF9427" action={doResult} />
+        <ButtonCalComponent text="C" color="#9B9B9B" action={limpiar} />
+        <ButtonCalComponent
+          text="+/-"
+          color="#9B9B9B"
+          action={positioNegativo}
+        />
+        <ButtonCalComponent text="del" color="#9B9B9B" action={btnDelete} />
+        <ButtonCalComponent text="/" color="#FF9427" action={btnDividir} />
       </View>
       <View style={styles.rowCal}>
-        <ButtonCalComponent text="7" action={doResult} />
-        <ButtonCalComponent text="8" action={doResult} />
-        <ButtonCalComponent text="9" action={doResult} />
-        <ButtonCalComponent text="x" color="#FF9427" action={doResult} />
+        <ButtonCalComponent text="7" action={armarNumero} />
+        <ButtonCalComponent text="8" action={armarNumero} />
+        <ButtonCalComponent text="9" action={armarNumero} />
+        <ButtonCalComponent text="x" color="#FF9427" action={btnMultiplicar} />
       </View>
       <View style={styles.rowCal}>
-        <ButtonCalComponent text="4" action={doResult} />
-        <ButtonCalComponent text="5" action={doResult} />
-        <ButtonCalComponent text="6" action={doResult} />
-        <ButtonCalComponent text="-" color="#FF9427" action={doResult} />
+        <ButtonCalComponent text="4" action={armarNumero} />
+        <ButtonCalComponent text="5" action={armarNumero} />
+        <ButtonCalComponent text="6" action={armarNumero} />
+        <ButtonCalComponent text="-" color="#FF9427" action={btnRestar} />
       </View>
       <View style={styles.rowCal}>
-        <ButtonCalComponent text="1" action={doResult} />
-        <ButtonCalComponent text="2" action={doResult} />
-        <ButtonCalComponent text="3" action={doResult} />
-        <ButtonCalComponent text="+" color="#FF9427" action={doResult} />
+        <ButtonCalComponent text="1" action={armarNumero} />
+        <ButtonCalComponent text="2" action={armarNumero} />
+        <ButtonCalComponent text="3" action={armarNumero} />
+        <ButtonCalComponent text="+" color="#FF9427" action={btnSumar} />
       </View>
       <View style={styles.rowCal}>
-        <ButtonCalComponent text="0" ancho action={doResult} />
-        <ButtonCalComponent text="." action={doResult} />
-        <ButtonCalComponent text="=" color="#FF9427" action={doResult} />
+        <ButtonCalComponent text="0" ancho action={armarNumero} />
+        <ButtonCalComponent text="." action={armarNumero} />
+        <ButtonCalComponent text="=" color="#FF9427" action={calcular} />
       </View>
     </View>
   );
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     paddingHorizontal: 10,
   },
-  result: {
+  resultCurrent: {
     color: 'white',
     fontSize: 40,
     marginBottom: 10,

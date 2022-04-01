@@ -26,11 +26,7 @@ export const ButtonCalComponent = ({
         width: ancho ? 180 : 80,
         backgroundColor: color,
       }}>
-      <TouchableOpacity
-        onPress={() => {
-          console.log(text);
-          action(text);
-        }}>
+      <TouchableOpacity onPress={() => action(text)}>
         <Text style={styles.textButton}>{text}</Text>
       </TouchableOpacity>
     </View>
